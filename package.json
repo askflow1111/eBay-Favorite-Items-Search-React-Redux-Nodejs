@@ -1,0 +1,30 @@
+{
+  "name": "webmood",
+  "version": "1.0.0",
+  "description": "An app which allows yous to get the mood of a web",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "nodemon --inspect app.js"
+  },
+  "author": "muhammad usman",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "isomorphic-fetch": "^2.2.1",
+    "method-override": "^2.3.8",
+    "morgan": "^1.8.1",
+    "nodemon": "^1.15.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "pg-promise": "^5.6.7"
+  }
+}
