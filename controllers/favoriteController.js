@@ -25,7 +25,7 @@ favoriteController.create = (req, res) => {
       title: req.body.title,
       description: req.body.description,
       image_url: req.body.image_url,
-      first_brewed_date: req.body.first_brewed_date,
+      first_ebay_date: req.body.first_ebay_date,
       food_pairing_joined: req.body.food_pairing_joined,
       volume_unit: req.body.volume_unit,
       volume_value: req.body.volume_value,
