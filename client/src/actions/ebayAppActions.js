@@ -3,6 +3,8 @@ export function fetchEbayApiDataFromBackend(searchBoxValue, nameOrFoodPairOption
     sortBy = "PricePlusShippingHighest";
   } else if (sortBy === "Price + Shipping: lowest first") {
     sortBy = "PricePlusShippingLowest";
+  } else if (sortBy === "Best Match") {
+    sortBy = "BestMatch";
   }
   return function (dispatch) {
     fetch('/ebayApi', {

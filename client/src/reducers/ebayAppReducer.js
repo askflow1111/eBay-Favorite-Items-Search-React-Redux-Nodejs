@@ -3,7 +3,7 @@ export default function reducer(
     ebayApiData: [],
     shouldFetch: true,
     fetched: false,
-    userInput: { nameOrFoodPairOption: "FixedPrice", searchBoxValue: "", sortBy: "BestMatch", maxResults: 25, ebayDate: null, ebayDataAfterOrBefore: "ebay_before" },
+    userInput: { nameOrFoodPairOption: "FixedPrice", searchBoxValue: "", sortBy: "Best Match", maxResults: 25, ebayDate: null, ebayDataAfterOrBefore: "ebay_before" },
     error: null,
     comingFromInput: false,
     updateMenu: 0,

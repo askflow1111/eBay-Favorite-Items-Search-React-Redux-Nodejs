@@ -33,7 +33,7 @@ class SortBy extends Component {
       <div className="sortby">
         <Dropdown
           // options={['BestMatch', 'PricePlusShippingLowest', 'PricePlusShippingHighest']}
-          options={['BestMatch', 'Price + Shipping: lowest first', 'Price + Shipping: highest first']}
+          options={['Best Match', 'Price + Shipping: lowest first', 'Price + Shipping: highest first']}
           onChange={this.handleSortByChange}
           value={this.props.ebayAppStore.userInput.sortBy}
           placeholder="Select an option"
