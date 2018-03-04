@@ -105,12 +105,11 @@ class Results extends Component {
             </div>
             <div className="content-container">
               <h4 className="name">{item.title}</h4>
-              <p className="description">{item.description}</p>
-              <p className="first-ebay-date"><span>Price: </span>${item.sellingStatus[0].convertedCurrentPrice[0].__value__}</p>
+              <p className="first-ebay-date"><span>Price: </span>${item.price}</p>
               <p className="abv"><span>Condition: </span> {item.condition} </p>
-              <p className="abv"><span>Returns Accepted: </span> {item.returnsAccepted} </p>
+              <p className="abv"><span>Returns Accepted: </span> {item.returns_accepted} </p>
               <button className="bttn more-details-bttn" onClick={() => this.handleMoreDetailsBttn(item)}>More Details</button>
-              <button className="bttn more-details-bttn" onClick={() => window.open(item.viewItemURL[0])}>View on eBay</button>
+              <button className="bttn more-details-bttn" onClick={() => window.open(item.ebay_url)}>View on eBay</button>
               <div className={"fav-star " + ((savedItemsObj[item.item_id]) ? "fav-star-filled" : "")} onClick={() => this.handleFavButton(item)}></div>
             </div>
           </li>

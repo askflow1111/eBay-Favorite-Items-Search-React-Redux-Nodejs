@@ -25,12 +25,12 @@ favoriteController.create = (req, res) => {
     title: req.body.title,
     description: req.body.description,
     image_url: req.body.image_url,
-    first_ebay_date: req.body.first_ebay_date,
-    food_pairing_joined: req.body.food_pairing_joined,
-    volume_unit: req.body.volume_unit,
-    volume_value: req.body.volume_value,
-    abv: req.body.abv,
     user_id: Number(req.body.user_id),
+    price: Number(req.body.price),
+    condition: req.body.condition,
+    returns_accepted: req.body.returns_accepted,
+    ebay_url: req.body.ebay_url,
+    category: req.body.category,
   })
     .then(data => {
       res.json({

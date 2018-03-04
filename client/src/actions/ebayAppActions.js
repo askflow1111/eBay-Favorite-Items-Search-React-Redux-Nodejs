@@ -1,10 +1,14 @@
-export function fetchEbayApiDataFromBackend(searchBoxValue, nameOrFoodPairOption, maxResults, ebayDataAfterOrBefore, ebayDate, sortBy) {
+export function fetchEbayApiDataFromBackend(searchBoxValue, listingType, maxResults, ebayDataAfterOrBefore, listingEndTime, sortBy) {
   if (sortBy === "Price + Shipping: highest first") {
     sortBy = "PricePlusShippingHighest";
   } else if (sortBy === "Price + Shipping: lowest first") {
     sortBy = "PricePlusShippingLowest";
   } else if (sortBy === "Best Match") {
     sortBy = "BestMatch";
+  }
+  if (listingEndTime !== null) {
+    listingEndTime = listingEndTime.split('-');
+    listingEndTime = `${listingEndTime[2]}-${listingEndTime[0]}-${listingEndTime[1]}T23:59:59.999Z`
   }
   return function (dispatch) {
     fetch('/ebayApi', {
@@ -13,13 +17,15 @@ export function fetchEbayApiDataFromBackend(searchBoxValue, nameOrFoodPairOption
       credentials: 'same-origin',
       body: JSON.stringify({
         search: searchBoxValue,
-        maxResults: maxResults,
-        listingType: nameOrFoodPairOption,
-        sortBy: sortBy,
+        maxResults,
+        listingType,
+        sortBy,
+        listingEndTime,
       }),
     })
       .then(res => res.json())
       .then((responseJson) => {
+        
         if (responseJson["@count"] == 0) {
           dispatch({ type: "FETCH_EBAYAPI_REJECTED", payload: null });
         } else {
@@ -40,10 +46,13 @@ export function fetchEbayApiDataFromBackend(searchBoxValue, nameOrFoodPairOption
 
 function fixEbayApiData(items) {
   items.forEach(item => {
-    (item.galleryURL === undefined) ? (item.image_url = "https://ir.ebaystatic.com/pictures/aw/pics/nextGenVit/imgNoImg.gif") : item.image_url = item.galleryURL[0];
+    item.image_url = (item.pictureURLSuperSize) || (item.pictureURLLarge) || (item.galleryURL) || ("https://ir.ebaystatic.com/pictures/aw/pics/nextGenVit/imgNoImg.gif");
     item.condition = (item.condition !== undefined) ? item.condition[0].conditionDisplayName[0] : "N/A"
-    item.returnsAccepted = (item.returnsAccepted !== undefined) ? ((item.returnsAccepted[0] === "true") ? "Yes" : "No") : "N/A";
+    item.returns_accepted = (item.returnsAccepted !== undefined) ? ((item.returnsAccepted[0] === "true") ? "Yes" : "No") : "N/A";
     item.item_id = item.itemId;
+    item.ebay_url = item.viewItemURL[0];
+    item.price = item.sellingStatus[0].convertedCurrentPrice[0].__value__;
+    item.category = item.primaryCategory[0].categoryName[0];
   });
   return items;
 }
@@ -89,6 +98,12 @@ export function addFavItemToDB(item, userId) {
         item_id: item.item_id,
         user_id: userId,
         title: item.title,
+        image_url: item.image_url,
+        price: item.price,
+        condition: item.condition,
+        returns_accepted: item.returns_accepted,
+        ebay_url: item.ebay_url,
+        category: item.category,
       }),
     })
       .then(res => res.json())
@@ -132,9 +147,9 @@ export function areTwoArrSame(arrOne, arrTwo) {
   };
 }
 
-export function changeUrlToUserInput(searchBoxValue, nameOrFoodPairOption, sortBy, maxResults, ebayDataAfterOrBefore, ebayDate, history) {
+export function changeUrlToUserInput(searchBoxValue, listingType, sortBy, maxResults, ebayDataAfterOrBefore, listingEndTime, history) {
   return function (dispatch) {
-    history.push(`/Search=${searchBoxValue}&nameOrFoodPairOption=${nameOrFoodPairOption}&sortBy=${sortBy}&maxResults=${maxResults}&ebayDataAfterOrBefore=${ebayDataAfterOrBefore}&ebayDate=${ebayDate}`);
+    history.push(`/Search=${searchBoxValue}&listingType=${listingType}&sortBy=${sortBy}&maxResults=${maxResults}&ebayDataAfterOrBefore=${ebayDataAfterOrBefore}&listingEndTime=${listingEndTime}`);
   };
 }
 
@@ -150,9 +165,9 @@ export function changeUserInputebayDataAfterOrBefore(value) {
   };
 }
 
-export function changeUserInputebayDate(value) {
+export function changeUserInputlistingEndTime(value) {
   return function (dispatch) {
-    dispatch({ type: "CHANGE_USERINPUT_ebayDate", payload: value });
+    dispatch({ type: "CHANGE_USERINPUT_listingEndTime", payload: value });
   };
 }
 

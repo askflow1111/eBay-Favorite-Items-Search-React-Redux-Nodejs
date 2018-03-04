@@ -60,23 +60,7 @@ class Register extends Component {
         }
       }).then(() => {
         console.log('this.props.ebayAppStore.userInfo.id => ', this.props.ebayAppStore.userInfo.id);
-
-        // debugger
-
-
       })
-  }
-
-
-
-  componentDidMount() {
-    // fetch('/ebayApi', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   credentials: 'same-origin',
-    // }).then((fetchRes) => {
-    //   debugger
-    // })
   }
 
   render() {

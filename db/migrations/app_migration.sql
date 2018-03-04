@@ -15,7 +15,12 @@ CREATE TABLE ebay_items (
   id BIGSERIAL PRIMARY KEY,
   item_id BIGINT UNIQUE NOT NULL,
   title VARCHAR(1024),
-  image_url VARCHAR(1024)
+  image_url VARCHAR(1024),
+  price BIGINT,
+  condition VARCHAR(255),
+  returns_accepted VARCHAR(255),
+  ebay_url VARCHAR(1024),
+  category VARCHAR(1024),
 );
 
 CREATE TABLE favorites (

@@ -3,7 +3,7 @@ export default function reducer(
     ebayApiData: [],
     shouldFetch: true,
     fetched: false,
-    userInput: { nameOrFoodPairOption: "FixedPrice", searchBoxValue: "", sortBy: "Best Match", maxResults: 25, ebayDate: null, ebayDataAfterOrBefore: "ebay_before" },
+    userInput: { listingType: "FixedPrice", searchBoxValue: "", sortBy: "Best Match", maxResults: 25, listingEndTime: null, ebayDataAfterOrBefore: "ebay_before" },
     error: null,
     comingFromInput: false,
     updateMenu: 0,
@@ -60,23 +60,12 @@ export default function reducer(
         }, {}),
       };
     }
-    // case "DELETE_FAV_ITEM_FROM_DB_FULFILLED": {
-    //   // debugger
-    //   // let newFavDataFromDB = { ...state.favDataFromDB };
-    //   // let { [action.payload]: deletedKey, ...keys } = newFavDataFromDB;
-    //   // debugger
-    //   delete state.favDataFromDB[action.payload]
-    //   return {
-    //     ...state,
-    //     favDataFromDB: { ...state.favDataFromDB },
-    //   };
-    // }
 
     case "RESET_THE_SEARCH_DATA": {
       return {
         ...state,
         fetched: false,
-        userInput: { nameOrFoodPairOption: "FixedPrice", searchBoxValue: "", sortBy: "Best Match", maxResults: 25, ebayDate: null, ebayDataAfterOrBefore: "ebay_before" },
+        userInput: { listingType: "FixedPrice", searchBoxValue: "", sortBy: "Best Match", maxResults: 25, listingEndTime: null, ebayDataAfterOrBefore: "ebay_before" },
         ebayApiData: []
       };
     }
@@ -104,10 +93,10 @@ export default function reducer(
       };
     }
 
-    case "CHANGE_USERINPUT_ebayDate": {
+    case "CHANGE_USERINPUT_listingEndTime": {
       return {
         ...state,
-        userInput: { ...state.userInput, ebayDate: action.payload }
+        userInput: { ...state.userInput, listingEndTime: action.payload }
       };
     }
 
@@ -121,7 +110,7 @@ export default function reducer(
     case "CHANGE_USERINPUT_NameOrFoodPairValue": {
       return {
         ...state,
-        userInput: { ...state.userInput, nameOrFoodPairOption: action.payload }
+        userInput: { ...state.userInput, listingType: action.payload }
       };
     }
 

@@ -24,7 +24,7 @@ class SortBy extends Component {
   handleSortByChange = (e) => {
     this.props.dispatch(changeUserInputSortBy(e.value))
     if (this.props.ebayAppStore.userInput.searchBoxValue !== "") {
-      this.props.dispatch(changeUrlToUserInput(this.props.ebayAppStore.userInput.searchBoxValue, this.props.ebayAppStore.userInput.nameOrFoodPairOption, this.props.ebayAppStore.userInput.sortBy, this.props.ebayAppStore.userInput.maxResults, this.props.ebayAppStore.userInput.ebayDataAfterOrBefore, this.props.ebayAppStore.userInput.ebayDate, this.props.history))
+      this.props.dispatch(changeUrlToUserInput(this.props.ebayAppStore.userInput.searchBoxValue, this.props.ebayAppStore.userInput.listingType, this.props.ebayAppStore.userInput.sortBy, this.props.ebayAppStore.userInput.maxResults, this.props.ebayAppStore.userInput.ebayDataAfterOrBefore, this.props.ebayAppStore.userInput.listingEndTime, this.props.history))
     }
   }
 

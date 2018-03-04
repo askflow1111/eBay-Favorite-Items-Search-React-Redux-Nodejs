@@ -11,7 +11,7 @@ import {
   changeUserInputSortBy,
   changeUserInputMaxResults,
   changeUserInputebayDataAfterOrBefore,
-  changeUserInputebayDate,
+  changeUserInputlistingEndTime,
   changeUserInfoId,
   changeUserInfoUsername,
   changeUserInfoEmail,
@@ -36,21 +36,20 @@ class App extends Component {
 
   changeInputValues = match => {
     this.removeStringFromNull(match.params)
-    this.props.dispatch(changeUserInputNameOrFoodPairValue(match.params.nameOrFoodPairOption))
+    this.props.dispatch(changeUserInputNameOrFoodPairValue(match.params.listingType))
     this.props.dispatch(changeUserInputSearchBoxValue(match.params.searchBoxValue));
     this.props.dispatch(changeUserInputSortBy(match.params.sortBy));
     this.props.dispatch(changeUserInputMaxResults(match.params.maxResults));
     this.props.dispatch(changeUserInputMaxResults(match.params.maxResults));
     this.props.dispatch(changeUserInputebayDataAfterOrBefore(match.params.ebayDataAfterOrBefore));
-    this.props.dispatch(changeUserInputebayDate(match.params.ebayDate));
+    this.props.dispatch(changeUserInputlistingEndTime(match.params.listingEndTime));
   }
 
   fetch = match => {
-    this.props.dispatch(fetchEbayApiDataFromBackend(match.params.searchBoxValue, match.params.nameOrFoodPairOption, match.params.maxResults, match.params.ebayDataAfterOrBefore, match.params.ebayDate, match.params.sortBy));
+    this.props.dispatch(fetchEbayApiDataFromBackend(match.params.searchBoxValue, match.params.listingType, match.params.maxResults, match.params.ebayDataAfterOrBefore, match.params.listingEndTime, match.params.sortBy));
   };
 
   updateUserData = () => {
-    // debugger
     fetch('/api/user', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
@@ -85,7 +84,7 @@ class App extends Component {
       <Router >
         <Switch>
           <Route
-            path="/Search=:searchBoxValue&nameOrFoodPairOption=:nameOrFoodPairOption&sortBy=:sortBy&maxResults=:maxResults&ebayDataAfterOrBefore=:ebayDataAfterOrBefore&ebayDate=:ebayDate"
+            path="/Search=:searchBoxValue&listingType=:listingType&sortBy=:sortBy&maxResults=:maxResults&ebayDataAfterOrBefore=:ebayDataAfterOrBefore&listingEndTime=:listingEndTime"
             render={({ match }) => {
               if (!this.props.ebayAppStore.comingFromInput && this.props.ebayAppStore.shouldFetch) {
                 this.changeInputValues(match);
