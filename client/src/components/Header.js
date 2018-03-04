@@ -12,8 +12,8 @@ import { Link } from 'react-router-dom'
 
 class Header extends Component {
   shouldComponentUpdate(nextProps, nextState) {
-    if ((this.props.match.path !== nextProps.match.path) ||
-      ((this.props.ebayAppStore.userInfo.id !== nextProps.ebayAppStore.userInfo.id) && (this.props.ebayAppStore.userInfo.email !== nextProps.ebayAppStore.userInfo.email) && (this.props.ebayAppStore.userInfo.username !== nextProps.ebayAppStore.userInfo.username))) {
+    if ((this.props.match.path !== nextProps.match.path) || 
+    (this.props.ebayAppStore.userInfo.id !== nextProps.ebayAppStore.userInfo.id)) {
       return true;
     }
     return false;
