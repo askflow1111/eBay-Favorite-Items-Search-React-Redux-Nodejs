@@ -53,34 +53,34 @@ class Results extends Component {
     }
   };
 
-  sortList = list => {
+  // sortList = list => {
     
-    if (this.props.ebayAppStore.userInput.sortBy === "Beer Name") {
-      return [...list].sort((a, b) => a.name.localeCompare(b.name))
-    } else if (this.props.ebayAppStore.userInput.sortBy === "First Ebay Date") {
-      return ([...list].sort((a, b) => {
-        a = a.first_ebay.split('/').map(Number)
-        b = b.first_ebay.split('/').map(Number)
-        if (a[1] > b[1]) {
-          return 1;
-        } else if (a[1] < b[1]) {
-          return -1;
-        } else if (a[1] === b[1]) {
-          if (a[0] > b[0]) {
-            return 1;
-          } else if (a[0] < b[0]) {
-            return -1;
-          } else {
-            return 0;
-          }
-        }
-      }));
-    } else if (this.props.ebayAppStore.userInput.sortBy === "ABV") {
-      return [...list].sort((a, b) => a.abv - b.abv)
-    } else {
-      return list;
-    }
-  }
+  //   if (this.props.ebayAppStore.userInput.sortBy === "Beer Name") {
+  //     return [...list].sort((a, b) => a.name.localeCompare(b.name))
+  //   } else if (this.props.ebayAppStore.userInput.sortBy === "First Ebay Date") {
+  //     return ([...list].sort((a, b) => {
+  //       a = a.first_ebay.split('/').map(Number)
+  //       b = b.first_ebay.split('/').map(Number)
+  //       if (a[1] > b[1]) {
+  //         return 1;
+  //       } else if (a[1] < b[1]) {
+  //         return -1;
+  //       } else if (a[1] === b[1]) {
+  //         if (a[0] > b[0]) {
+  //           return 1;
+  //         } else if (a[0] < b[0]) {
+  //           return -1;
+  //         } else {
+  //           return 0;
+  //         }
+  //       }
+  //     }));
+  //   } else if (this.props.ebayAppStore.userInput.sortBy === "ABV") {
+  //     return [...list].sort((a, b) => a.abv - b.abv)
+  //   } else {
+  //     return list;
+  //   }
+  // }
 
   handleMoreDetailsBttn = (item) => {
     this.props.dispatch(updateItemInfoModal(item, true));
@@ -114,7 +114,7 @@ class Results extends Component {
               <p className="abv"><span>Returns Accepted: </span> {(item.returnsAccepted !== undefined) ? ((item.returnsAccepted[0] === "true") ? "Yes" : "No") : "N/A"} </p>
               <button className="bttn more-details-bttn" onClick={() => this.handleMoreDetailsBttn(item)}>More Details</button>
               <button className="bttn more-details-bttn" onClick={() => window.open(item.viewItemURL[0])}>View on eBay</button>
-              <div className={"fav-star " + ((this.props.ebayAppStore.hasFetchedFavDataFromDB && this.props.ebayAppStore.favDataFromDB[item.itemId[0]] || savedItemsObj[item.itemId[0]]) ? "fav-star-filled" : "")} onClick={() => this.handleFavButton(item)}></div>
+              <div className={"fav-star " + (((this.props.ebayAppStore.hasFetchedFavDataFromDB && this.props.ebayAppStore.favDataFromDB[item.itemId[0]]) || savedItemsObj[item.itemId[0]]) ? "fav-star-filled" : "")} onClick={() => this.handleFavButton(item)}></div>
             </div>
           </li>
         );
