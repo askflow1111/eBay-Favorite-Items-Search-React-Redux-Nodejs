@@ -21,17 +21,17 @@ favoriteController.show = (req, res) => {
 
 favoriteController.create = (req, res) => {
   favoriteModel.create({
-      itemId: Number(req.body.itemId),
-      title: req.body.title,
-      description: req.body.description,
-      image_url: req.body.image_url,
-      first_ebay_date: req.body.first_ebay_date,
-      food_pairing_joined: req.body.food_pairing_joined,
-      volume_unit: req.body.volume_unit,
-      volume_value: req.body.volume_value,
-      abv: req.body.abv,
-      user_id: Number(req.body.user_id),
-    })
+    item_id: Number(req.body.item_id),
+    title: req.body.title,
+    description: req.body.description,
+    image_url: req.body.image_url,
+    first_ebay_date: req.body.first_ebay_date,
+    food_pairing_joined: req.body.food_pairing_joined,
+    volume_unit: req.body.volume_unit,
+    volume_value: req.body.volume_value,
+    abv: req.body.abv,
+    user_id: Number(req.body.user_id),
+  })
     .then(data => {
       res.json({
         message: "ok",
@@ -47,9 +47,9 @@ favoriteController.create = (req, res) => {
 
 favoriteController.destroy = (req, res) => {
   favoriteModel.destroy({
-      itemId: Number(req.body.itemId),
-      userId: Number(req.body.user_id),
-    })
+    item_id: Number(req.body.item_id),
+    userId: Number(req.body.user_id),
+  })
     .then(response => {
       res.json({
         message: "item deleted successfully"

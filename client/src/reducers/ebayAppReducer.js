@@ -44,7 +44,7 @@ export default function reducer(
     case "ADD_FAV_ITEM_TO_DB_FULFILLED": {
       return {
         ...state,
-        favDataFromDB: { ...state.favDataFromDB, [action.payload.itemid]: action.payload },
+        favDataFromDB: { ...state.favDataFromDB, [action.payload.item_id]: action.payload },
       };
     }
 

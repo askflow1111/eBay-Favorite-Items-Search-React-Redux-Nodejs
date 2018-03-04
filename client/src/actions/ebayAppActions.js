@@ -23,10 +23,11 @@ export function fetchEbayApiDataFromBackend(searchBoxValue, nameOrFoodPairOption
         if (responseJson["@count"] == 0) {
           dispatch({ type: "FETCH_EBAYAPI_REJECTED", payload: null });
         } else {
+          let data = fixEbayApiData(responseJson.item);
           dispatch({
             type: "FETCH_EBAYAPI_FULFILLED",
             payload: {
-              ebayApiData: responseJson.item,
+              ebayApiData: data,
             },
           });
         }
@@ -35,6 +36,16 @@ export function fetchEbayApiDataFromBackend(searchBoxValue, nameOrFoodPairOption
         dispatch({ type: "FETCH_EBAYAPI_REJECTED", payload: err });
       });
   };
+}
+
+function fixEbayApiData(items) {
+  items.forEach(item => {
+    (item.galleryURL === undefined) ? (item.image_url = "https://ir.ebaystatic.com/pictures/aw/pics/nextGenVit/imgNoImg.gif") : item.image_url = item.galleryURL[0];
+    item.condition = (item.condition !== undefined) ? item.condition[0].conditionDisplayName[0] : "N/A"
+    item.returnsAccepted = (item.returnsAccepted !== undefined) ? ((item.returnsAccepted[0] === "true") ? "Yes" : "No") : "N/A";
+    item.item_id = item.item_id;
+  });
+  return items;
 }
 
 export function transferDataFromLocalStorageToDB(userId) {
@@ -62,7 +73,7 @@ export function fetchFavDataFromDatabase(userId) {
         return response.json();
       })
       .then((responseJson) => {
-
+debugger
         dispatch({ type: "FETCH_FAV_DATA_FROM_DATABASE_FULFILLED", payload: responseJson.data.data });
       })
   };
@@ -77,7 +88,7 @@ export function addFavItemToDB(item, userId) {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin',
       body: JSON.stringify({
-        itemId: item.itemId[0] || item.itemId,
+        item_id: item.item_id,
         user_id: userId,
         title: item.title,
       }),
@@ -91,20 +102,20 @@ export function addFavItemToDB(item, userId) {
   };
 }
 
-export function deleteFavItemFromDB(itemId, userId) {
+export function deleteFavItemFromDB(item_id, userId) {
   return function (dispatch) {
     fetch('/fav/destroy', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin',
       body: JSON.stringify({
-        itemId: itemId,
+        item_id: item_id,
         user_id: userId,
       }),
     })
       .then((responseJson) => {
         console.log('Item deleted from DB', responseJson)
-        dispatch({ type: "DELETE_FAV_ITEM_FROM_DB_FULFILLED", payload: itemId });
+        dispatch({ type: "DELETE_FAV_ITEM_FROM_DB_FULFILLED", payload: item_id });
 
       })
   };

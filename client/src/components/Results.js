@@ -35,20 +35,20 @@ class Results extends Component {
     console.log('item => ', item);
     if (this.props.ebayAppStore.userInfo.id === null) {
       let savedItemsObj = JSON.parse(localStorage.getItem("savedItemsObj")) || {};
-      if (savedItemsObj[item.itemId[0]] === undefined) {
-        savedItemsObj[item.itemId[0]] = item;
-      } else if (savedItemsObj[item.itemId[0]] !== undefined) {
-        delete savedItemsObj[item.itemId[0]];
+      if (savedItemsObj[item.item_id] === undefined) {
+        savedItemsObj[item.item_id] = item;
+      } else if (savedItemsObj[item.item_id] !== undefined) {
+        delete savedItemsObj[item.item_id];
       }
       localStorage.setItem("savedItemsObj", JSON.stringify(savedItemsObj));
       // this.forceUpdate();
       this.props.dispatch(updateMenu());
       this.props.dispatch(updateResults());
     } else {
-      if (this.props.ebayAppStore.favDataFromDB[item.itemId[0]] === undefined) {
+      if (this.props.ebayAppStore.favDataFromDB[item.item_id] === undefined) {
         this.props.dispatch(addFavItemToDB(item, this.props.ebayAppStore.userInfo.id));
       } else {
-        this.props.dispatch(deleteFavItemFromDB(item.itemId[0], this.props.ebayAppStore.userInfo.id));
+        this.props.dispatch(deleteFavItemFromDB(item.item_id, this.props.ebayAppStore.userInfo.id));
       }
     }
   };
@@ -94,27 +94,26 @@ class Results extends Component {
 
     let savedItemsObj = JSON.parse(localStorage.getItem("savedItemsObj")) || {};
     if (this.props.ebayAppStore.ebayApiData.length > 0) {
-      // debugger
       // return this.sortList(this.props.ebayAppStore.ebayApiData).map(item => {
       return (this.props.ebayAppStore.ebayApiData).map((item, index) => {
-        // console.log('id', item.itemId[0])
+        // console.log('id', item.item_id)
     
         // debugger
     
         return (
-          <li key={index} className="list">
+          <li key={item.item_id} className="list">
             <div className="image-container">
-              <img src={(item.galleryURL !== undefined) ? item.galleryURL[0] : "https://ir.ebaystatic.com/pictures/aw/pics/nextGenVit/imgNoImg.gif"} alt="" />
+              <img src={item.image_url} alt="" />
             </div>
             <div className="content-container">
               <h4 className="name">{item.title}</h4>
               <p className="description">{item.description}</p>
               <p className="first-ebay-date"><span>Price: </span>${item.sellingStatus[0].convertedCurrentPrice[0].__value__}</p>
-              <p className="abv"><span>Condition: </span> {(item.condition !== undefined) ? item.condition[0].conditionDisplayName[0] : "N/A"} </p>
-              <p className="abv"><span>Returns Accepted: </span> {(item.returnsAccepted !== undefined) ? ((item.returnsAccepted[0] === "true") ? "Yes" : "No") : "N/A"} </p>
+              <p className="abv"><span>Condition: </span> {item.condition} </p>
+              <p className="abv"><span>Returns Accepted: </span> {item.returnsAccepted} </p>
               <button className="bttn more-details-bttn" onClick={() => this.handleMoreDetailsBttn(item)}>More Details</button>
               <button className="bttn more-details-bttn" onClick={() => window.open(item.viewItemURL[0])}>View on eBay</button>
-              <div className={"fav-star " + (((this.props.ebayAppStore.hasFetchedFavDataFromDB && this.props.ebayAppStore.favDataFromDB[item.itemId[0]]) || savedItemsObj[item.itemId[0]]) ? "fav-star-filled" : "")} onClick={() => this.handleFavButton(item)}></div>
+              <div className={"fav-star " + (((this.props.ebayAppStore.hasFetchedFavDataFromDB && this.props.ebayAppStore.favDataFromDB[item.item_id]) || savedItemsObj[item.item_id]) ? "fav-star-filled" : "")} onClick={() => this.handleFavButton(item)}></div>
             </div>
           </li>
         );

@@ -33,17 +33,14 @@ class BurgerMenu extends Component {
 
   renderList = () => {
     let savedItemsObj = (this.props.ebayAppStore.hasFetchedFavDataFromDB && this.props.ebayAppStore.favDataFromDB) || (JSON.parse(localStorage.getItem("savedItemsObj")));
+    // debugger
     if (savedItemsObj !== null) {
       let listArr = [];
       for (let key in savedItemsObj) {
-        // debugger
-        // if (savedItemsObj[key].itemId === undefined) {
-        //   debugger
-        // }
         listArr.push(
-          <li key={savedItemsObj[key].itemId}>
+          <li key={savedItemsObj[key].item_id}>
             <div className="img-container">
-              <img src={(savedItemsObj[key].galleryURL !== undefined) ? savedItemsObj[key].galleryURL[0] : "https://ir.ebaystatic.com/pictures/aw/pics/nextGenVit/imgNoImg.gif"} alt="" />
+              <img src={(savedItemsObj[key].image_url !== undefined) ? savedItemsObj[key].galleryURL[0] : "https://ir.ebaystatic.com/pictures/aw/pics/nextGenVit/imgNoImg.gif"} alt="" />
             </div>
             <h4 className="name">{savedItemsObj[key].title}</h4>
             <div className="options">
@@ -54,7 +51,7 @@ class BurgerMenu extends Component {
                 alt="Zoom Button"
               />
               <img
-                onClick={e => this.deleteItem(savedItemsObj[key].itemId)}
+                onClick={e => this.deleteItem(savedItemsObj[key].item_id)}
                 className="delete-img-bttn"
                 src={delBttnImg}
                 alt="Delete Button"

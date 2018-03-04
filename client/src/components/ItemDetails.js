@@ -42,7 +42,7 @@ class ItemDetails extends Component {
 
               <li key={data.id} className="list">
                 <div className="image-container">
-                  <img src={data.galleryURL[0]} alt="" />
+                  <img src={data.image_url} alt="" />
                 </div>
                 <div className="content-container">
                   <h4 className="name">{data.title}</h4>

@@ -13,14 +13,14 @@ CREATE TABLE users (
 
 CREATE TABLE ebay_items (
   id BIGSERIAL PRIMARY KEY,
-  itemId BIGINT UNIQUE NOT NULL,
+  item_id BIGINT UNIQUE NOT NULL,
   title VARCHAR(1024),
   image_url VARCHAR(1024)
 );
 
 CREATE TABLE favorites (
   id BIGSERIAL PRIMARY KEY,
-  ebay_items_ref_itemId BIGINT REFERENCES ebay_items(itemId),
+  ebay_items_ref_item_id BIGINT REFERENCES ebay_items(item_id),
   user_ref_id INTEGER REFERENCES users(id)
 );
 
