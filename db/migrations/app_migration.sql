@@ -20,7 +20,7 @@ CREATE TABLE ebay_items (
   condition VARCHAR(255),
   returns_accepted VARCHAR(255),
   ebay_url VARCHAR(1024),
-  category VARCHAR(1024),
+  category VARCHAR(1024)
 );
 
 CREATE TABLE favorites (
