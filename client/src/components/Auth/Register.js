@@ -41,7 +41,6 @@ class Register extends Component {
         return response.json()
       })
       .then((responseJson) => {
-        debugger
         if (responseJson.code && responseJson.code === "23505") {
           this.setState({ registrationFailed: true });
           this.props.dispatch(playAuthFailedAnimation(this.refs.authFailed, "shake"));

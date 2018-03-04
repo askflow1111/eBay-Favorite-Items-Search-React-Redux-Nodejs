@@ -43,7 +43,7 @@ function fixEbayApiData(items) {
     (item.galleryURL === undefined) ? (item.image_url = "https://ir.ebaystatic.com/pictures/aw/pics/nextGenVit/imgNoImg.gif") : item.image_url = item.galleryURL[0];
     item.condition = (item.condition !== undefined) ? item.condition[0].conditionDisplayName[0] : "N/A"
     item.returnsAccepted = (item.returnsAccepted !== undefined) ? ((item.returnsAccepted[0] === "true") ? "Yes" : "No") : "N/A";
-    item.item_id = item.item_id;
+    item.item_id = item.itemId;
   });
   return items;
 }
@@ -69,11 +69,10 @@ export function fetchFavDataFromDatabase(userId) {
       }),
     })
       .then((response) => {
-
         return response.json();
       })
       .then((responseJson) => {
-debugger
+
         dispatch({ type: "FETCH_FAV_DATA_FROM_DATABASE_FULFILLED", payload: responseJson.data.data });
       })
   };
@@ -82,7 +81,6 @@ debugger
 
 export function addFavItemToDB(item, userId) {
   return function (dispatch) {
-
     fetch('/fav/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -96,7 +94,6 @@ export function addFavItemToDB(item, userId) {
       .then(res => res.json())
       .then((responseJson) => {
         dispatch({ type: "ADD_FAV_ITEM_TO_DB_FULFILLED", payload: responseJson.data.data });
-
         console.log('Item added to DB', responseJson)
       })
   };

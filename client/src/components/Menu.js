@@ -33,14 +33,13 @@ class BurgerMenu extends Component {
 
   renderList = () => {
     let savedItemsObj = (this.props.ebayAppStore.hasFetchedFavDataFromDB && this.props.ebayAppStore.favDataFromDB) || (JSON.parse(localStorage.getItem("savedItemsObj")));
-    // debugger
     if (savedItemsObj !== null) {
       let listArr = [];
       for (let key in savedItemsObj) {
         listArr.push(
           <li key={savedItemsObj[key].item_id}>
             <div className="img-container">
-              <img src={(savedItemsObj[key].image_url !== undefined) ? savedItemsObj[key].galleryURL[0] : "https://ir.ebaystatic.com/pictures/aw/pics/nextGenVit/imgNoImg.gif"} alt="" />
+              <img src={savedItemsObj[key].image_url} alt="" />
             </div>
             <h4 className="name">{savedItemsObj[key].title}</h4>
             <div className="options">
