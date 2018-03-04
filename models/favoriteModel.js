@@ -18,7 +18,6 @@ favoriteModel.findFavByUserId = item => {
 
 
 favoriteModel.create = item => {
-
   // INSERT INTO favorites (ebay_items_ref_itemId, user_ref_id)
   // VALUES ($1, $10) RETURNING *
   return db.one(
@@ -30,7 +29,7 @@ favoriteModel.create = item => {
       );
    
       INSERT INTO favorites (ebay_items_ref_itemId, user_ref_id)
-      SELECT * FROM (SELECT $1, $10) AS tmp 
+      SELECT * FROM (SELECT $1, $4) AS tmp 
       WHERE NOT EXISTS (
           SELECT * FROM favorites WHERE ebay_items_ref_itemId = $1 AND user_ref_id = $4
       );

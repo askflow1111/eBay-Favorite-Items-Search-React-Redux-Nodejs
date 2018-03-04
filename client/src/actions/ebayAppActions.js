@@ -84,7 +84,6 @@ export function addFavItemToDB(item, userId) {
     })
       .then(res => res.json())
       .then((responseJson) => {
-
         dispatch({ type: "ADD_FAV_ITEM_TO_DB_FULFILLED", payload: responseJson.data.data });
 
         console.log('Item added to DB', responseJson)
