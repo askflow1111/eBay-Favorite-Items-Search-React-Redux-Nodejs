@@ -13,7 +13,6 @@ import FlipMove from 'react-flip-move';
 class Results extends Component {
 
   shouldComponentUpdate(newProps, newState) {
-    // debugger
     if (
       this.props.ebayAppStore.fetched !== newProps.ebayAppStore.fetched ||
       this.props.ebayAppStore.userInput.sortBy !== newProps.ebayAppStore.userInput.sortBy ||
@@ -31,7 +30,6 @@ class Results extends Component {
 
 
   handleFavButton = item => {
-    
     console.log('item => ', item);
     if (this.props.ebayAppStore.userInfo.id === null) {
       let savedItemsObj = JSON.parse(localStorage.getItem("savedItemsObj")) || {};
@@ -54,7 +52,7 @@ class Results extends Component {
   };
 
   // sortList = list => {
-    
+
   //   if (this.props.ebayAppStore.userInput.sortBy === "Beer Name") {
   //     return [...list].sort((a, b) => a.name.localeCompare(b.name))
   //   } else if (this.props.ebayAppStore.userInput.sortBy === "First Ebay Date") {
@@ -92,14 +90,14 @@ class Results extends Component {
   renderList = () => {
     console.log('this.props.ebayAppStore.favDataFromDB', this.props.ebayAppStore.favDataFromDB);
 
-    let savedItemsObj = JSON.parse(localStorage.getItem("savedItemsObj")) || {};
+    let savedItemsObj = (this.props.ebayAppStore.hasFetchedFavDataFromDB && this.props.ebayAppStore.favDataFromDB) || (JSON.parse(localStorage.getItem("savedItemsObj"))) || {};
     if (this.props.ebayAppStore.ebayApiData.length > 0) {
+      
       // return this.sortList(this.props.ebayAppStore.ebayApiData).map(item => {
       return (this.props.ebayAppStore.ebayApiData).map((item, index) => {
         // console.log('id', item.item_id)
-    
-        // debugger
-    
+
+   
         return (
           <li key={item.item_id} className="list">
             <div className="image-container">
@@ -113,7 +111,7 @@ class Results extends Component {
               <p className="abv"><span>Returns Accepted: </span> {item.returnsAccepted} </p>
               <button className="bttn more-details-bttn" onClick={() => this.handleMoreDetailsBttn(item)}>More Details</button>
               <button className="bttn more-details-bttn" onClick={() => window.open(item.viewItemURL[0])}>View on eBay</button>
-              <div className={"fav-star " + (((this.props.ebayAppStore.hasFetchedFavDataFromDB && this.props.ebayAppStore.favDataFromDB[item.item_id]) || savedItemsObj[item.item_id]) ? "fav-star-filled" : "")} onClick={() => this.handleFavButton(item)}></div>
+              <div className={"fav-star " + ((savedItemsObj[item.item_id]) ? "fav-star-filled" : "")} onClick={() => this.handleFavButton(item)}></div>
             </div>
           </li>
         );

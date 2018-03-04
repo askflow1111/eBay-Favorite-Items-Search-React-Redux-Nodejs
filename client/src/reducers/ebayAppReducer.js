@@ -53,7 +53,7 @@ export default function reducer(
       return {
         ...state,
         favDataFromDB: Object.keys(state.favDataFromDB).reduce((result, key) => {
-          if (Number(key) !== action.payload) {
+          if (Number(key) !== Number(action.payload)) {
             result[key] = state.favDataFromDB[key];
           }
           return result;

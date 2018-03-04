@@ -110,6 +110,7 @@ export function deleteFavItemFromDB(item_id, userId) {
         user_id: userId,
       }),
     })
+      .then(res => res.json())
       .then((responseJson) => {
         console.log('Item deleted from DB', responseJson)
         dispatch({ type: "DELETE_FAV_ITEM_FROM_DB_FULFILLED", payload: item_id });
