@@ -110,7 +110,7 @@ class AddInput extends Component {
     const horizontalLabels = {
       0: 'Low',
       40: 'Medium',
-      80: 'High'
+      100: 'High'
     }
 
 
