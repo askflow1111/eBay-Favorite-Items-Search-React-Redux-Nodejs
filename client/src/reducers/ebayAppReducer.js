@@ -76,7 +76,7 @@ export default function reducer(
       return {
         ...state,
         fetched: false,
-        userInput: { nameOrFoodPairOption: "FixedPrice", searchBoxValue: "", sortBy: "BestMatch", maxResults: 25, ebayDate: null, ebayDataAfterOrBefore: "ebay_before" },
+        userInput: { nameOrFoodPairOption: "FixedPrice", searchBoxValue: "", sortBy: "Best Match", maxResults: 25, ebayDate: null, ebayDataAfterOrBefore: "ebay_before" },
         ebayApiData: []
       };
     }
