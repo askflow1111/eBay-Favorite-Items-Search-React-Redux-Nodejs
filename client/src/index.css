@@ -679,10 +679,11 @@ body {
   width: 79%;
   margin: auto;
   display: flex;
+  flex-direction: column;
 }
 .user-form-container .auth-failed {
   display: none;
-  width: 22%;
+  min-width: 22%;
   text-align: center;
   margin: auto;
   color: #a94442;
