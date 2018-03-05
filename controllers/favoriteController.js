@@ -22,9 +22,8 @@ favoriteController.show = (req, res) => {
 favoriteController.create = (req, res) => {
   favoriteModel.create({
     item_id: Number(req.body.item_id),
-    title: req.body.title,
-    description: req.body.description,
-    image_url: req.body.image_url,
+    title: req.body.title[0],
+    image_url: req.body.image_url[0],
     user_id: Number(req.body.user_id),
     price: Number(req.body.price),
     condition: req.body.condition,

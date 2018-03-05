@@ -25,7 +25,7 @@ export function fetchEbayApiDataFromBackend(searchBoxValue, listingType, maxResu
     })
       .then(res => res.json())
       .then((responseJson) => {
-        
+
         if (responseJson["@count"] == 0) {
           dispatch({ type: "FETCH_EBAYAPI_REJECTED", payload: null });
         } else {
@@ -81,7 +81,6 @@ export function fetchFavDataFromDatabase(userId) {
         return response.json();
       })
       .then((responseJson) => {
-
         dispatch({ type: "FETCH_FAV_DATA_FROM_DATABASE_FULFILLED", payload: responseJson.data.data });
       })
   };

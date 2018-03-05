@@ -22,9 +22,7 @@ import {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.updateUserData();
   }
-
 
   removeStringFromNull = obj => {
     for (let key in obj) {
@@ -73,9 +71,12 @@ class App extends Component {
       })
   }
 
-
   shouldComponentUpdate(newProps, newState) {
     return false;
+  }
+
+  componentDidMount() {
+    this.updateUserData();
   }
 
   render() {

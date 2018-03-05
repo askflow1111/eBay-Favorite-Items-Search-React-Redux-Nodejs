@@ -18,29 +18,32 @@ favoriteModel.findFavByUserId = item => {
 
 
 favoriteModel.create = item => {
-  // INSERT INTO favorites (ebay_items_ref_item_id, user_ref_id)
-  // VALUES ($1, $10) RETURNING *
   return db.one(
     ` 
-      INSERT INTO ebay_items (item_id, title)
-      SELECT * FROM (SELECT $1, $2) AS tmp 
+      INSERT INTO ebay_items (item_id, title, image_url, price, condition, returns_accepted, ebay_url, category)
+      SELECT * FROM (SELECT $2, $3, $4, $5, $6, $7, $8, $9) AS tmp 
       WHERE NOT EXISTS (
-          SELECT item_id FROM ebay_items WHERE item_id = $1
+          SELECT item_id FROM ebay_items WHERE item_id = $2
       );
    
       INSERT INTO favorites (ebay_items_ref_item_id, user_ref_id)
-      SELECT * FROM (SELECT $1, $4) AS tmp 
+      SELECT * FROM (SELECT $2, $1) AS tmp 
       WHERE NOT EXISTS (
-          SELECT * FROM favorites WHERE ebay_items_ref_item_id = $1 AND user_ref_id = $4
+          SELECT * FROM favorites WHERE ebay_items_ref_item_id = $2 AND user_ref_id = $1
       );
       
-      SELECT * FROM ebay_items WHERE item_id = $1;
+      SELECT * FROM ebay_items WHERE item_id = $2;
     `,
     [
+      item.user_id,
       item.item_id,
       item.title,
       item.image_url,
-      item.user_id,
+      item.price,
+      item.condition,
+      item.returns_accepted,
+      item.ebay_url,
+      item.category
     ]
   );
 };
