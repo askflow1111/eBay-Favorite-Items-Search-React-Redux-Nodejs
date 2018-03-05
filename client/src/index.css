@@ -485,7 +485,7 @@ body {
 }
 .content .left-column .results li .content-container .fav-star {
   cursor: pointer;
-  background-image: url(https://s10.postimg.org/iicz5l7t5/empty_star.png);
+  background-image: url(images/empty_star.png);
   background-size: contain;
   background-repeat: no-repeat;
   margin: auto;
@@ -496,10 +496,10 @@ body {
   margin-top: 17px;
 }
 .content .left-column .results li .content-container .fav-star:hover {
-  background-image: url(https://s10.postimg.org/89khzrjrd/full_star.png);
+  background-image: url(images/full_star.png);
 }
 .content .left-column .results li .content-container .fav-star-filled {
-  background-image: url(https://s10.postimg.org/89khzrjrd/full_star.png);
+  background-image: url(images/full_star.png);
 }
 .content .left-column .results li .save-item {
   position: absolute;
