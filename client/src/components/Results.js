@@ -15,7 +15,6 @@ class Results extends Component {
   shouldComponentUpdate(newProps, newState) {
     if (
       this.props.ebayAppStore.fetched !== newProps.ebayAppStore.fetched ||
-      this.props.ebayAppStore.userInput.sortBy !== newProps.ebayAppStore.userInput.sortBy ||
       this.props.ebayAppStore.ebayApiData !== newProps.ebayAppStore.ebayApiData ||
       this.props.ebayAppStore.updateResults !== newProps.ebayAppStore.updateResults ||
       JSON.stringify(this.props.ebayAppStore.favDataFromDB) !== JSON.stringify(newProps.ebayAppStore.favDataFromDB) ||
@@ -53,8 +52,6 @@ class Results extends Component {
   }
 
   renderList = () => {
-    console.log('this.props.ebayAppStore.favDataFromDB', this.props.ebayAppStore.favDataFromDB);
-
     let savedItemsObj = (this.props.ebayAppStore.hasFetchedFavDataFromDB && this.props.ebayAppStore.favDataFromDB) || (JSON.parse(localStorage.getItem("savedItemsObj"))) || {};
     if (this.props.ebayAppStore.ebayApiData.length > 0) {
       return (this.props.ebayAppStore.ebayApiData).map((item, index) => {
@@ -86,7 +83,6 @@ class Results extends Component {
   }
 
   render() {
-    console.log('RESULTS.js ABOUT TO RENDER ');
     return (
       <div className="results">
         {(!this.props.ebayAppStore.fetched) ? this.renderLoading() : (

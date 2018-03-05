@@ -84,7 +84,6 @@ class Main extends Component {
   }
 
   render() {
-    console.log('rendering main.js', this.props);
     return (
       <div id="outer-container" onClick={this.checkTarget}>
         <Menu />

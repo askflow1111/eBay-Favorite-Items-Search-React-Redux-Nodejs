@@ -9,7 +9,7 @@ export function fetchEbayApiDataFromBackend(searchBoxValue, listingType, maxResu
   if (listingEndTime !== null) {
     listingEndTime = listingEndTime.split('-');
     listingEndTime = `${listingEndTime[2]}-${listingEndTime[0]}-${listingEndTime[1]}T23:59:59.999Z`
-  }
+  }  
   return function (dispatch) {
     fetch('/ebayApi', {
       method: 'POST',
@@ -108,7 +108,6 @@ export function addFavItemToDB(item, userId) {
       .then(res => res.json())
       .then((responseJson) => {
         dispatch({ type: "ADD_FAV_ITEM_TO_DB_FULFILLED", payload: responseJson.data.data });
-        console.log('Item added to DB', responseJson)
       })
   };
 }
@@ -126,9 +125,7 @@ export function deleteFavItemFromDB(item_id, userId) {
     })
       .then(res => res.json())
       .then((responseJson) => {
-        console.log('Item deleted from DB', responseJson)
         dispatch({ type: "DELETE_FAV_ITEM_FROM_DB_FULFILLED", payload: item_id });
-
       })
   };
 }

@@ -3,6 +3,8 @@ require('dotenv').config();
 const API_KEY = process.env.EBAY_API_SECRET_KEY;
 
 function fetchItemsFromEbay(req, res, next) {
+  console.log('rendering fetchItemsFromEbay');
+
   let URL = `http://svcs.ebay.com/services/search/FindingService/v1?`;
   URL += `OPERATION-NAME=findItemsByKeywords`;
   URL += `&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=${API_KEY}`;

@@ -54,7 +54,6 @@ class Register extends Component {
   }
 
   render() {
-    console.log('this.props form register => ', this.props);
     return (
       <div className="user-form-container">
         <h3 ref="authFailed" className={"auth-failed " + (this.state.registrationFailed ? "show" : "")}>Username already exists</h3>

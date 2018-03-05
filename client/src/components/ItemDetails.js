@@ -22,12 +22,8 @@ class ItemDetails extends Component {
   };
 
   render() {
-    console.log('this.props.ebayAppStore.isSideBarOpen ', this.props.ebayAppStore.isSideBarOpen);
-
     if (this.props.ebayAppStore.showItemInfoModal) {
-      console.log("this.props.ebayAppStore.itemInfoForModal => ", this.props.ebayAppStore.itemInfoForModal)
       let data = this.props.ebayAppStore.itemInfoForModal;
-      // debugger
       return (
         <div className="item-details-modal-main">
           <div className={"item-details-modal-container " + (!this.props.ebayAppStore.isSideBarOpen ? 'sidebar-closed' : '')}>

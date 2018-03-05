@@ -58,13 +58,10 @@ class Register extends Component {
           this.props.dispatch(fetchFavDataFromDatabase(responseJson.userInfo.id));
           this.props.history.push(`/profile`);
         }
-      }).then(() => {
-        console.log('this.props.ebayAppStore.userInfo.id => ', this.props.ebayAppStore.userInfo.id);
       })
   }
 
   render() {
-    console.log('this.props form login => ', this.props);
     return (
       <div className="user-form-container">
         <h3 ref="authFailed" className={"auth-failed " + (this.state.authFailed ? "show" : "")}>Wrong Username or Password</h3>

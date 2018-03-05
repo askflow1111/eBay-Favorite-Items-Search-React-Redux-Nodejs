@@ -19,7 +19,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log('this.props form profile => ', this.props);
     return (
       <div className="user-form-container">
         <div className="user-form profile">

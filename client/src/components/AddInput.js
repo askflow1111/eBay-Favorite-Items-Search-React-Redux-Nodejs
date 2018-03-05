@@ -109,7 +109,6 @@ class AddInput extends Component {
       100: 'High'
     }
 
-    console.log('Rendering addInput.js ', this.props.ebayAppStore.userInput);
     return (
       <div className="add-input">
         <form className="form" onSubmit={(e) => {

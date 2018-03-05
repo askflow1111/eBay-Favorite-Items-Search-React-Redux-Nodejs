@@ -80,7 +80,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('app.js rendering ', this.props);
     return (
       <Router >
         <Switch>
@@ -117,8 +116,6 @@ class App extends Component {
           <Route
             exact path="/login"
             render={({ match }) => {
-              console.log('this.props.ebayAppStore.userInfo ', this.props.ebayAppStore);
-
               return ((this.props.ebayAppStore.userInfo.id !== null) ? <Redirect to='/profile' /> : <Main />)
             }
             }
