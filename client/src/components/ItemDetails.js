@@ -28,7 +28,6 @@ class ItemDetails extends Component {
       console.log("this.props.ebayAppStore.itemInfoForModal => ", this.props.ebayAppStore.itemInfoForModal)
       let data = this.props.ebayAppStore.itemInfoForModal;
       // debugger
-      // let foodPairing = data.food_pairing.join(', ')
       return (
         <div className="item-details-modal-main">
           <div className={"item-details-modal-container " + (!this.props.ebayAppStore.isSideBarOpen ? 'sidebar-closed' : '')}>
@@ -46,18 +45,14 @@ class ItemDetails extends Component {
                 </div>
                 <div className="content-container">
                   <h4 className="name">{data.title}</h4>
-                  {/* <p className="description"><span>Description: </span>{data.description}</p>
-                  <p className="first-ebay-date"><span>First Ebay Date: </span>{data.first_ebay}</p>
-                  <p className="abv"><span>ABV: </span> {data.abv} </p>
-                  <p className="volume"><span>Volume: </span> {data.volume.value || data.volumeValue} {data.volume.unit || data.volumeUnit}</p>
-                  <p className="food-pairing"><span>Food Pairing: </span> asdas</p> */}
+                  <p><span>Price: </span> ${data.price} </p>
+                  <p><span>Condition: </span>{data.condition}</p>
+                  <p><span>Category: </span>{data.category}</p>
+                  <p><span>Returns Accepted: </span>{data.returns_accepted}</p>
+                  <button className="bttn" onClick={() => window.open(data.ebay_url)}>View on eBay</button>
                 </div>
               </li>
             </ul>
-
-
-
-
           </div>
         </div>
       );

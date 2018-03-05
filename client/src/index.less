@@ -454,7 +454,7 @@ body {
                 margin-top: 0;
                 background: white;
                 .image-container {
-                    background: #eeeeee;
+                    background-color: white;
                     transition: 0.8s ease;
                     overflow: hidden;
                     img {
@@ -476,15 +476,15 @@ body {
                     }
                 }
                 .content-container {
-                    background: white;
+                    background: #eeeeee4d;
                     padding: 14px;
                     font-weight: 400;
+                    height: 100%;
                     .name {
                         font-size: 20px;
                         word-break: break-word;
                     }
-                    .first-ebay-date,
-                    .abv {
+                    &>p {
                         font-size: 12px;
                     }
                     span {
@@ -904,10 +904,11 @@ body {
                 overflow: hidden;
                 display: flex;
                 align-items: center;
+                width: 46vh;
                 img {
-                    // max-height: 636px;
                     max-height: 636px;
-                    max-width: 382px;
+                    max-width: -webkit-fill-available;
+                    min-width: -webkit-fill-available;
                     transition: transform 0.8s ease;
                     -moz-transform: rotate(1deg) scale(0.8);
                     -webkit-transform: rotate(1deg) scale(0.8);
@@ -934,6 +935,96 @@ body {
                 }
                 span {
                     font-weight: 600;
+                }
+                .bttn {
+                    align-items: flex-start;
+                    background-attachment: scroll;
+                    background-clip: border-box;
+                    background-color: rgb(52, 152, 219);
+                    background-image: none;
+                    background-origin: padding-box;
+                    background-position-x: 0%;
+                    background-position-y: 0%;
+                    background-size: auto;
+                    border-bottom-color: rgb(41, 128, 185);
+                    border-bottom-left-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                    border-bottom-style: solid;
+                    border-bottom-width: 4px;
+                    border-image-outset: 0px;
+                    border-image-repeat: stretch;
+                    border-image-slice: 100%;
+                    border-image-source: none;
+                    border-image-width: 1;
+                    border-left-color: rgb(41, 128, 185);
+                    border-left-style: none;
+                    border-left-width: 0px;
+                    border-right-color: rgb(41, 128, 185);
+                    border-right-style: none;
+                    border-right-width: 0px;
+                    border-top-color: rgb(41, 128, 185);
+                    border-top-left-radius: 3px;
+                    border-top-right-radius: 3px;
+                    border-top-style: none;
+                    border-top-width: 0px;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    color: rgb(255, 255, 255);
+                    cursor: pointer;
+                    display: block;
+                    font-family: Raleway, Verdana, Geneva, sans-serif;
+                    font-stretch: 100%;
+                    font-style: normal;
+                    font-variant-caps: normal;
+                    font-variant-east-asian: normal;
+                    font-variant-ligatures: normal;
+                    font-variant-numeric: normal;
+                    font-weight: 700;
+                    left: 0px;
+                    letter-spacing: normal;
+                    max-width: 100%;
+                    overflow-x: visible;
+                    overflow-y: visible;
+                    padding-bottom: 4px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    padding-top: 8px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration-color: rgb(255, 255, 255);
+                    text-decoration-line: none;
+                    text-decoration-style: solid;
+                    text-indent: 0px;
+                    text-rendering: auto;
+                    text-shadow: none;
+                    text-transform: none;
+                    transition-delay: 0s;
+                    transition-duration: 0.3s;
+                    transition-property: all;
+                    transition-timing-function: ease;
+                    white-space: nowrap;
+                    word-spacing: 0px;
+                    word-wrap: break-word;
+                    writing-mode: horizontal-tb;
+                    -webkit-appearance: none;
+                    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    font-size: 16px;
+                    width: 189px;
+                    margin: auto;
+                    margin-top: 26px;
+                    &:hover {
+                        background: #2980b9;
+                        border-bottom: 4px solid #2980b9!important;
+                        color: #fff;
+                        text-decoration: none;
+                        border-bottom: none;
+                    }
+                    &:focus {
+                        outline: -webkit-focus-ring-color auto 5px;
+                    }
                 }
             }
         }
@@ -1062,6 +1153,9 @@ body {
                 width: 100%;
                 img {
                     max-height: 380px;
+                    min-width: auto;
+                    margin: auto;
+                    min-height: 300px;
                 }
             }
         }
