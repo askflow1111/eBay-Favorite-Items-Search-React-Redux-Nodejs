@@ -67,7 +67,7 @@ class Header extends Component {
     return (
       <div className="header">
         <div className="container">
-          <h1 className="title">ebay Favorite Search</h1>
+          <h1 className="title">eBay Favorite Search</h1>
           <nav>
             <ul>
               <li className={((this.props.match.path === "/" || this.props.match.path.substr(0, 7) === "/Search") ? "current-page" : "")}
