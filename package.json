@@ -1,12 +1,13 @@
 {
-  "name": "webmood",
+  "name": "ebay_fav_items",
   "version": "1.0.0",
-  "description": "An app which allows yous to get the mood of a web",
+  "description": "eBay Favorite Item Search app which allows you to search items from ebay and then favorite them and also allowing you to login",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js",
-    "start": "nodemon --inspect app.js"
+    "start": "nodemon --inspect app.js",
+    "heroku-postbuild": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "author": "muhammad usman",
   "license": "ISC",

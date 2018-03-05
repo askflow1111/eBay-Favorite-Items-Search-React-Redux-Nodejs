@@ -47,9 +47,6 @@ app.use("/ebayApi", ebayRoutes);
 app.use("/auth", authRoutes);
 app.use("/api/user", userRoutes);
 
-
-// app.get("*", function (req, res) {
-//   res.status(404).render("webmood/not-found", {
-//     message: "this is working",
-//   });
-// });
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});

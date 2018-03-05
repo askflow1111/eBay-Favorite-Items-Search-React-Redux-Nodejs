@@ -1,8 +1,8 @@
-\connect ebay_fav_items;
+-- \connect ebay_fav_items;
 
-DROP TABLE favorites;
-DROP TABLE users;
-DROP TABLE ebay_items;
+-- DROP TABLE favorites;
+-- DROP TABLE users;
+-- DROP TABLE ebay_items;
 
 CREATE TABLE users (
   id BIGSERIAL PRIMARY KEY,
