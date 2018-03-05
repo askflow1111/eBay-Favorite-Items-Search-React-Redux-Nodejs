@@ -41,14 +41,20 @@ export default function reducer(
       };
     }
 
+    case "CHANGE_hasFetchedFavDataFromDB": {
+      return {
+        ...state,
+        hasFetchedFavDataFromDB: action.payload,
+      };
+    }
+
     case "ADD_FAV_ITEM_TO_DB_FULFILLED": {
       return {
         ...state,
         favDataFromDB: { ...state.favDataFromDB, [action.payload.item_id]: action.payload },
       };
     }
-
-
+    
     case "DELETE_FAV_ITEM_FROM_DB_FULFILLED": {
       return {
         ...state,

@@ -9,7 +9,7 @@ export function fetchEbayApiDataFromBackend(searchBoxValue, listingType, maxResu
   if (listingEndTime !== null) {
     listingEndTime = listingEndTime.split('-');
     listingEndTime = `${listingEndTime[2]}-${listingEndTime[0]}-${listingEndTime[1]}T23:59:59.999Z`
-  }  
+  }
   return function (dispatch) {
     fetch('/ebayApi', {
       method: 'POST',
@@ -86,6 +86,11 @@ export function fetchFavDataFromDatabase(userId) {
   };
 }
 
+export function change_hasFetchedFavDataFromDB(data) {
+  return function (dispatch) {
+    dispatch({ type: "CHANGE_hasFetchedFavDataFromDB", payload: data });
+  };
+}
 
 export function addFavItemToDB(item, userId) {
   return function (dispatch) {

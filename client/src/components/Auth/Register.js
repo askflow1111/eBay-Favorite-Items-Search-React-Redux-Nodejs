@@ -5,7 +5,8 @@ import {
   changeUserInfoId,
   changeUserInfoUsername,
   changeUserInfoEmail,
-  playAuthFailedAnimation
+  playAuthFailedAnimation,
+  change_hasFetchedFavDataFromDB
 } from "../../actions/ebayAppActions";
 
 class Register extends Component {
@@ -31,6 +32,7 @@ class Register extends Component {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'same-origin',
       body: JSON.stringify({
         username: e.target.username.value,
         email: e.target.email.value,
@@ -48,6 +50,7 @@ class Register extends Component {
           this.props.dispatch(changeUserInfoId(responseJson.data.user.id));
           this.props.dispatch(changeUserInfoUsername(responseJson.data.user.username));
           this.props.dispatch(changeUserInfoEmail(responseJson.data.user.email));
+          this.props.dispatch(change_hasFetchedFavDataFromDB(true));
           this.props.history.push(`/profile`);
         }
       })
