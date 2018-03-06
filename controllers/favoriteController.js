@@ -3,7 +3,9 @@ const favoriteModel = require("../models/favoriteModel");
 const favoriteController = {};
 
 favoriteController.show = (req, res) => {
-  favoriteModel.findFavByUserId()
+  favoriteModel.findFavByUserId({
+    user_id: req.body.user_id,
+  })
     .then(item => {
       let obj = {};
       item.forEach(e => obj[e.id] = e)

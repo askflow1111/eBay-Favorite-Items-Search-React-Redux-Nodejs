@@ -12,7 +12,7 @@ favoriteModel.findFavByUserId = item => {
   INNER JOIN favorites ON ebay_items.item_id = favorites.ebay_items_ref_item_id)
   WHERE
   favorites.user_ref_id = $1
-  `, [1]);
+  `, [item.user_id]);
 };
 
 
