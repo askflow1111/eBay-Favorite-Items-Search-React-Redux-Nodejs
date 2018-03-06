@@ -29,7 +29,7 @@ eBay Favorite Search App allows you to instantly search items from eBay, and add
  - Click on the "More Details" Button to see more information about the item
  - If you like an item then click on the star button to add it into your favorite list
  - If you would also like to see your favorite items later on on a different computer then login if you have an account otherwise register, and your favorites items would get transfered to your account.
- - > Demo Account => ***Username***: **`example`** | ***Password***: **`example`**
+ - Demo Account => ***Username***: **`example`** | ***Password***: **`example`**
 
 ### What techs are being used? 
  - React
